@@ -1,0 +1,18 @@
+Phase 4: Reflection and Discussion Answers
+Question 1:
+If the View Designer decided to change the "Number of People" input from a text box to a Slider or a Stepper (+/- buttons), which files would require a total rewrite, and which would remain completely untouched?
+Answer:
+
+The view.kv file would require a total rewrite for that section because the UI widget itself would change from TextInput to Slider.
+The controller.py file would need some changes to handle the new widget’s events and bind the value differently.
+The model.py file would remain completely untouched. The Model only cares about storing and validating the num_people value and calculating total_per_person how the user inputs that number does not affect it.
+
+Question 2:
+When a user enters a negative number of people, the Model is the one that raises the ValueError. Why is it better to put this "rule" in the Model rather than having the Controller or View check the number before sending it?
+Answer:
+The Model file has the logic so putting validation in the Model keeps the rules in one central place and if we later change how the app works (e.g., add a new UI or use the Model in another project), the rule still applies automatically.
+
+Question 3:
+Imagine we want to add a feature that saves every calculation to a history log. If we were not using MVC and had all our code in one large file, what specific problems would your team have faced while trying to work on this feature simultaneously today?
+Answer:
+Code would become messy and hard to read making it harder to debug. Using MVC allowed us to work simultaneously: one person on view.kv, one on model.py, and one on controller.py with very little overlap.
