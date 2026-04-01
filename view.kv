@@ -7,23 +7,63 @@
 
     Label:
         text: 'Enter your bill amount below: '
+        font_size: 18
 
     TextInput:
         hint_text: "$"
+        multiline: False
         on_text: root.bill_input = self.text
 
+    # NEW: Number of People Input
     Label:
-        text: root.tip_output
+        text: 'Number of People'
+        font_size: 18
+        bold: True
+        size_hint_y: None
+        height: 40
+
+    TextInput:
+        id: num_people_input
+        hint_text: "Number of People"
+        multiline: False
+        input_filter: 'int'       
+        size_hint_y: None
+        height: 50
+        on_text: root.num_people_input = self.text  
+
+    # Tip Percentage Buttons
+    Label:
+        text: 'Choose Tip Percentage:'
+        font_size: 18
 
     Button:
         text: 'Calculate 15% Tip'
         on_release: root.btn_click_calc_tip(15)
-    
+        size_hint_y: None
+        height: 50
+
     Button:
         text: 'Calculate 20% Tip'
         on_release: root.btn_click_calc_tip(20)
-    
+        size_hint_y: None
+        height: 50
+
     Button:
         text: 'Calculate 25% Tip'
         on_release: root.btn_click_calc_tip(25)
+        size_hint_y: None
+        height: 50
 
+    # NEW: Split Result Label
+    Label:
+        text: root.split_output if root.split_output else "Split amount per person will appear here"
+        font_size: 20
+        bold: True
+        size_hint_y: None
+        height: 80
+        halign: 'center'
+        color: 0, 0.8, 0, 1   # Nice green color
+
+    Label:
+        text: root.tip_output
+        font_size: 16
